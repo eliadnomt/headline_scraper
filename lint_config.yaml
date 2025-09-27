@@ -1,0 +1,6 @@
+# lint_config.yaml
+black: true
+isort: true
+mypy: true
+pylint: true
+coverage: false
