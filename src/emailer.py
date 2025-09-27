@@ -1,10 +1,17 @@
 """
 emailer.py sends the HTML content via SMTP using a stored token.
 """
+from pathlib import Path
 
 import yagmail
+import logging
 
-from src.config import RECIPIENTS, SENDER_EMAIL, SMTP_PORT, SMTP_SERVER
+from secret_files.config import TOKEN_PATH, RECIPIENTS, SENDER_EMAIL
+from yagmail.error import YagInvalidEmailAddress, YagAddressError, YagConnectionClosed
+
+logger = logging.getLogger(__name__)
+
+from src.config import SMTP_PORT, SMTP_SERVER
 from src.helpers import Email
 
 
@@ -22,9 +29,27 @@ def send_email(contents: str) -> None:
         port=SMTP_PORT,
     )
 
-    yag = yagmail.SMTP(
-        user=SENDER_EMAIL, oauth2_file="~/.yagmail/eliadnomt.json", smtp_ssl=True
-    )  # triggers one-time browser login & token storage
+    # Ensure token file exists before connecting
+    if not Path(TOKEN_PATH).exists():
+        logger.error("OAuth token file not found at %s", TOKEN_PATH)
+        raise FileNotFoundError(f"OAuth token file missing: {TOKEN_PATH}")
+
+    try:
+        yag = yagmail.SMTP(
+            user=SENDER_EMAIL,
+            oauth2_file=str(TOKEN_PATH),
+            smtp_ssl=True,
+        )
+    except (OSError, YagConnectionClosed) as e:
+        logger.error("Failed to initialize SMTP connection: %s", e)
+        raise
 
     for recipient in email.recipients:
-        yag.send(to=recipient, subject=email.subject, contents=email.body)
+        try:
+            yag.send(to=recipient, subject=email.subject, contents=email.body)
+            logger.info("Email sent to %s", recipient)
+        except (YagInvalidEmailAddress, YagAddressError) as e:
+            logger.warning("Invalid email address %s: %s", recipient, e)
+        except OSError as e:
+            logger.error("Failed to send email to %s: %s", recipient, e)
+            raise
