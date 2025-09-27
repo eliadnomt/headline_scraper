@@ -2,11 +2,10 @@
 main.py is the entry point for headline_scraper.
 """
 
-from email import send_email
-
-from config import TOPICS
-from format import to_html
-from scrape import get_articles_for_all
+from src.config import TOPICS
+from src.emailer import send_email
+from src.format import to_html
+from src.scrape import get_articles_for_all
 
 
 def main():
@@ -18,10 +17,12 @@ def main():
     feed = get_articles_for_all(TOPICS)
     html_contents = to_html(feed)
     send_email(html_contents)
-	#TODO: Setup daily script run
-	#TODO: Implement logging
-	#TODO: Cache headlines for three days to avoid repetition
-	#TODO: Make CSS formatting nicer
+
+
+# TODO: Setup daily script run
+# TODO: Implement logging
+# TODO: Cache headlines for three days to avoid repetition
+# TODO: Make CSS formatting nicer
 
 
 if __name__ == "__main__":

@@ -7,7 +7,7 @@ from typing import List
 
 import feedparser
 
-from helpers import Article, TopicList
+from src.helpers import Article, TopicList
 
 
 def get_articles_for_all(topics: List[str]) -> List[TopicList]:

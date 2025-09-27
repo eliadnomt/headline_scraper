@@ -1,11 +1,11 @@
 """
-email.py sends the HTML content via SMTP using a stored token.
+emailer.py sends the HTML content via SMTP using a stored token.
 """
 
 import yagmail
 
-from config import RECIPIENTS, SENDER_EMAIL, SMTP_PORT, SMTP_SERVER
-from helpers import Email
+from src.config import RECIPIENTS, SENDER_EMAIL, SMTP_PORT, SMTP_SERVER
+from src.helpers import Email
 
 
 def send_email(contents: str) -> None:

@@ -5,7 +5,7 @@ format.py contains all the functions related to HTML formatting of scraped conte
 from datetime import datetime
 from typing import List
 
-from helpers import TopicList
+from src.helpers import TopicList
 
 
 def to_html(feed: List[TopicList]) -> str:
