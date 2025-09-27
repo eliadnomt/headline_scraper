@@ -18,6 +18,10 @@ def main():
     feed = get_articles_for_all(TOPICS)
     html_contents = to_html(feed)
     send_email(html_contents)
+	#TODO: Setup daily script run
+	#TODO: Implement logging
+	#TODO: Cache headlines for three days to avoid repetition
+	#TODO: Make CSS formatting nicer
 
 
 if __name__ == "__main__":
