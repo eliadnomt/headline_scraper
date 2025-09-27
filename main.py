@@ -27,9 +27,9 @@ def main():
 
 
 # TODO: Setup daily script run
-# TODO: Add when article published to source HTML
-# TODO: Cache headlines for three days to avoid repetition
+# TODO: Cache headlines to avoid repetition
 # TODO: Make CSS formatting nicer
+# TODO: Sort articles by order of recency
 
 
 if __name__ == "__main__":

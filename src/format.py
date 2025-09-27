@@ -31,7 +31,8 @@ def to_html(feed: List[TopicList]) -> str:
         for article in topic.article_list:
             split_link = article.title.split(" - ")
 
-            html += f"<p>{split_link[-1]}<br><a href='{article.link}'>{split_link[0]}</a><br></p>"
+            html += (f"<p>{split_link[-1]} - {article.publish_time}<br>"
+					 f"<a href='{article.link}'>{split_link[0]}</a><br></p>")
 
     logger.info("Finished HTML conversion")
     return html

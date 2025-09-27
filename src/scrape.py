@@ -42,7 +42,7 @@ def get_articles_for_specific(topic: str) -> TopicList:
     article_list = list()
 
     for rss_entry in feed.entries:
-        article_data = Article(title=rss_entry.title, link=rss_entry.link)
+        article_data = Article(title=rss_entry.title, link=rss_entry.link, publish_time=rss_entry.published)
         article_list.append(article_data)
 
     logger.info(

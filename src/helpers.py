@@ -8,26 +8,27 @@ from typing import List
 
 @dataclass
 class Article:
-    """A class to store RSS data for a scraped article."""
+	"""A class to store RSS data for a scraped article."""
 
-    title: str
-    link: str
+	title: str
+	link: str
+	publish_time: str
 
 
 @dataclass
 class TopicList:
-    """A class to map a list of Article objects to a given topic keyword(s)."""
+	"""A class to map a list of Article objects to a given topic keyword(s)."""
 
-    title: str
-    article_list: list
+	title: str
+	article_list: list
 
 
 @dataclass
 class Email:
-    """A class to store all required information to send an email via SMTP."""
+	"""A class to store all required information to send an email via SMTP."""
 
-    subject: str
-    body: str
-    recipients: List[str]
-    server: str
-    port: int
+	subject: str
+	body: str
+	recipients: List[str]
+	server: str
+	port: int
