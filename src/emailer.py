@@ -1,23 +1,24 @@
 """
 emailer.py sends the HTML content via SMTP using a stored token.
 """
+
+import logging
 from pathlib import Path
 
 import yagmail
-import logging
+from yagmail.error import (YagAddressError, YagConnectionClosed,
+                           YagInvalidEmailAddress)
 
-from secret_files.config import TOKEN_PATH, RECIPIENTS, SENDER_EMAIL
-from yagmail.error import YagInvalidEmailAddress, YagAddressError, YagConnectionClosed
-
-logger = logging.getLogger(__name__)
-
+from secret_files.secret_config import RECIPIENTS, SENDER_EMAIL, TOKEN_PATH
 from src.config import SMTP_PORT, SMTP_SERVER
 from src.helpers import Email
+
+logger = logging.getLogger(__name__)
 
 
 def send_email(contents: str) -> None:
     """
-    Sends the formatted HTML contents to all emails in the recipient list in src/config.py
+    Sends the formatted HTML contents to all emails in the recipient list in src/secret_config.py
     :param contents: HTML string
     :return: None
     """

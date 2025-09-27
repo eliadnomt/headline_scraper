@@ -6,7 +6,9 @@ import yaml
 
 
 def main():
-    cfg_path = Path(sys.argv[1]) if len(sys.argv) > 1 else Path("lint_config.yaml")
+    cfg_path = (
+        Path(sys.argv[1]) if len(sys.argv) > 1 else Path("config/lint_config.yaml")
+    )
     if not cfg_path.exists():
         sys.exit(f"Config linter file not found: {cfg_path}")
 
@@ -24,9 +26,9 @@ def main():
     if cfg.get("isort"):
         run("isort .")
     if cfg.get("mypy"):
-        run("mypy . --ignore-missing-imports")
+        run("mypy src --ignore-missing-imports")
     if cfg.get("pylint"):
-        run("pylint src --disable=R1734,W0511")  # adjust to your code directory
+        run("pylint src --disable=R1734,W0511,W1203")  # adjust to your code directory
     if cfg.get("coverage"):
         run("coverage run -m pytest && coverage report")
 

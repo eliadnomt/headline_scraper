@@ -1,5 +1,5 @@
 """
-config.py contains all global variables that can be updated by the user as required.
+secret_config.py contains all global variables that can be updated by the user as required.
 """
 
 TOPICS = [
