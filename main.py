@@ -28,7 +28,7 @@ def main():
 
 # TODO: Setup daily script run
 # TODO: Make CSS formatting nicer
-# TODO: Sort articles by order of recency
+# TODO: cache email sending data and newsletter count
 
 
 if __name__ == "__main__":

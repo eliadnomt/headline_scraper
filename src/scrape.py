@@ -77,8 +77,8 @@ def check_cache(entry: Article) -> bool:
 	"""
 	title_to_check = entry.title.strip()
 	for cached in load_cache():
-		exisiting_title = cached.title.strip()
-		if title_to_check == exisiting_title:
+		existing_title = cached.title.strip()
+		if title_to_check == existing_title:
 			return False
 	return True
 

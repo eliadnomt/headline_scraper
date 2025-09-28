@@ -57,6 +57,9 @@ def send_email(contents: str) -> None:
 			logger.error("Failed to send email to %s: %s", recipient, e)
 			raise
 
+	# record_email(email.recipients, topic_counts)
+	# TODO: write record_email
+
 def get_date(html: str) -> str:
 	tag = "h1"
 	reg_str = "<" + tag + ">(.*?)</" + tag + ">"
