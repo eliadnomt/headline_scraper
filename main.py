@@ -27,7 +27,6 @@ def main():
 
 
 # TODO: Setup daily script run
-# TODO: Cache headlines to avoid repetition
 # TODO: Make CSS formatting nicer
 # TODO: Sort articles by order of recency
 

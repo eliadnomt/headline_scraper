@@ -11,3 +11,4 @@ TOPICS = [
 ]
 SMTP_SERVER = "smtp.gmail.com"
 SMTP_PORT = 465
+CACHE_FILE = "headline_cache.json"

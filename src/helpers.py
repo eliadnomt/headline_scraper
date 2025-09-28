@@ -3,6 +3,7 @@ helpers.py contains all Dataclass objects used to facilitate data handling in he
 """
 
 from dataclasses import dataclass
+from datetime import datetime
 from typing import List
 
 
@@ -32,3 +33,11 @@ class Email:
 	recipients: List[str]
 	server: str
 	port: int
+
+
+@dataclass
+class HeadlineCache:
+	"""A class for porting cached headline information in headline_cache.json."""
+
+	publish_time: datetime
+	title: str
