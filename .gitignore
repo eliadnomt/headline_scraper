@@ -4,10 +4,12 @@ __pycache__/
 .env/
 .vscode/
 .idea/
-secrets/
+secret_files/
+logs/
 
 .DS_Store
 ../Desktop/Thumbs.db
 
 *.key
 *.json
+*.log
